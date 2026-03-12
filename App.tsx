@@ -5,6 +5,7 @@ import Gallery from './components/Gallery';
 import Quiz from './components/Quiz';
 import Timeline from './components/Timeline';
 import Preloader from './components/Preloader';
+import Wishes from './components/Wishes';
 import { AnimatePresence } from 'framer-motion';
 
 const App: React.FC = () => {
@@ -37,10 +38,7 @@ const App: React.FC = () => {
               <Gallery />
             )}
             {activeSection === 'wishes' && (
-              <div className="pt-32 px-10 text-center">
-                <h2 className="text-4xl font-bold">Wishes</h2>
-                <p className="text-slate-500 mt-4">Coming soon...</p>
-              </div>
+              <Wishes />
             )}
           </>
         )}
