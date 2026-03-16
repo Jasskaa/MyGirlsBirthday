@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion'; // Añade esto
 import { MapPin, Check, ArrowRight, Heart, Clock, Smile, Frown } from 'lucide-react';
 
 interface Question {
@@ -62,7 +63,7 @@ const QUESTIONS: Question[] = [
     ],
     correctAnswer: 'b'
   },
-   {
+  {
     id: 5,
     question: "What is the thing i love the most about you?",
     subtitle: "...",
@@ -81,7 +82,7 @@ const Quiz: React.FC = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [recentAnswers, setRecentAnswers] = useState<{question: string, correct: boolean, id: number}[]>([]);
+  const [recentAnswers, setRecentAnswers] = useState<{ question: string, correct: boolean, id: number }[]>([]);
   const [isFinished, setIsFinished] = useState(false);
 
   const currentQuestion = QUESTIONS[currentIdx];
@@ -110,11 +111,12 @@ const Quiz: React.FC = () => {
   };
 
   if (isFinished) {
-    const isHighScore = score > 100;
+    const isHighScore = score >= 800;
+    const isPerfectScore = score === QUESTIONS.length * 100;
 
     return (
       <div className="mx-auto flex min-h-[80vh] w-full max-w-4xl flex-col items-center justify-center p-10 text-center animate-fade-in-up">
-        
+
         <div className={`mb-6 rounded-full p-6 ${isHighScore ? 'bg-green-100' : 'bg-red-100'}`}>
           {isHighScore ? (
             <Smile className="h-16 w-16 text-green-600" />
@@ -124,20 +126,36 @@ const Quiz: React.FC = () => {
         </div>
 
         <h2 className="text-4xl font-bold text-slate-900 mb-2">
-          {isHighScore ? "Amazing!" : "Oops..."}
+          {isPerfectScore ? "Incredible!" : (isHighScore ? "So Close!" : "Oops...")}
         </h2>
 
         <p className="text-xl text-slate-500 mb-6">
           You scored {score} points.
         </p>
 
-        <p className={`text-lg font-semibold mb-8 ${isHighScore ? 'text-green-600' : 'text-red-500'}`}>
-          {isHighScore 
-            ? "Hyeeeniii! I'm so proud of you ❤️"
-            : "Heinnnn really amore?... Try again and prove it 💔"}
-        </p>
+        {/* Mensaje condicional basado en si es puntuación perfecta */}
+        <div className="space-y-4 mb-8">
+          <p className={`text-lg font-semibold ${isPerfectScore ? 'text-green-600' : 'text-red-500'}`}>
+            {isPerfectScore
+              ? "Hyeeeniii! I'm so proud of you ❤️"
+              : "Heinnnn really amore?... Try again to get the secret code 💔"}
+          </p>
 
-        <button 
+          {isPerfectScore && (
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="bg-slate-900 text-white p-6 rounded-3xl shadow-xl border-2 border-pink-500"
+            >
+              <p className="text-sm uppercase tracking-widest text-pink-400 font-bold mb-1">Your Reward</p>
+              <p className="text-2xl font-mono font-black tracking-widest">
+                The Code is : <span className="text-green-400">MahiXula</span>
+              </p>
+            </motion.div>
+          )}
+        </div>
+
+        <button
           onClick={() => {
             setCurrentIdx(0);
             setScore(0);
@@ -156,7 +174,7 @@ const Quiz: React.FC = () => {
   return (
     <div className="mx-auto max-w-7xl px-6 py-28 lg:px-10">
       <div className="flex flex-col lg:flex-row gap-10">
-        
+
         {/* Left Side: Question Area */}
         <div className="flex-1">
           <div className="mb-8">
@@ -165,8 +183,8 @@ const Quiz: React.FC = () => {
               <span className="text-primary">Question {currentIdx + 1} <span className="text-slate-300">/ {QUESTIONS.length}</span></span>
             </div>
             <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
-              <div 
-                className="h-full bg-primary transition-all duration-500" 
+              <div
+                className="h-full bg-primary transition-all duration-500"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -196,19 +214,18 @@ const Quiz: React.FC = () => {
                     key={opt.id}
                     onClick={() => handleSelect(opt.id)}
                     disabled={showFeedback}
-                    className={`group relative overflow-hidden rounded-3xl aspect-[4/3] transition-all duration-300 ${
-                      isSelected 
-                        ? (isCorrect ? 'ring-4 ring-green-500 shadow-xl' : 'ring-4 ring-primary shadow-xl scale-[0.98]') 
+                    className={`group relative overflow-hidden rounded-3xl aspect-[4/3] transition-all duration-300 ${isSelected
+                        ? (isCorrect ? 'ring-4 ring-green-500 shadow-xl' : 'ring-4 ring-primary shadow-xl scale-[0.98]')
                         : 'hover:scale-[1.02] hover:shadow-lg'
-                    }`}
+                      }`}
                   >
-                    <img 
-                      src={opt.image} 
-                      alt={opt.label} 
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    <img
+                      src={opt.image}
+                      alt={opt.label}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    
+
                     <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-white">
                       <span className="font-bold text-lg drop-shadow-md">{opt.label}</span>
                       <div className={`h-6 w-6 rounded-full border-2 border-white/50 flex items-center justify-center transition-colors ${isSelected ? (isCorrect ? 'bg-green-500 border-green-500' : 'bg-primary border-primary') : ''}`}>
@@ -235,11 +252,10 @@ const Quiz: React.FC = () => {
               <button
                 onClick={handleNext}
                 disabled={!selectedId}
-                className={`flex h-14 items-center gap-3 rounded-full px-10 text-sm font-bold transition-all ${
-                  selectedId 
-                    ? 'bg-slate-900 text-white shadow-xl hover:bg-slate-800 translate-y-0' 
+                className={`flex h-14 items-center gap-3 rounded-full px-10 text-sm font-bold transition-all ${selectedId
+                    ? 'bg-slate-900 text-white shadow-xl hover:bg-slate-800 translate-y-0'
                     : 'bg-slate-100 text-slate-300 translate-y-2 cursor-not-allowed'
-                }`}
+                  }`}
               >
                 <span>Next Question</span>
                 <ArrowRight size={18} />

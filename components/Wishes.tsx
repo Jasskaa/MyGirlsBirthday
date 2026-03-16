@@ -5,13 +5,28 @@ import { Heart, Sparkles, X, Flower2, Leaf } from 'lucide-react';
 const Wishes: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showPasswordPrompt, setShowPasswordPrompt] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [error, setError] = useState(false);
 
-  const handleOpen = () => {
-    setIsOpen(true);
-    // Wait for envelope flap animation to finish before expanding the paper
-    setTimeout(() => {
-      setIsExpanded(true);
-    }, 800);
+  const handleOpenAttempt = () => {
+    if (isOpen) return;
+    setShowPasswordPrompt(true);
+  };
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passwordInput === 'MahiXula') {
+      setShowPasswordPrompt(false);
+      setIsOpen(true);
+      // Wait for envelope flap animation to finish before expanding the paper
+      setTimeout(() => {
+        setIsExpanded(true);
+      }, 800);
+    } else {
+      setError(true);
+      setTimeout(() => setError(false), 2000);
+    }
   };
 
   return (
@@ -33,15 +48,15 @@ const Wishes: React.FC = () => {
           <motion.div
             key={i}
             initial={{ y: "110vh", opacity: 0, scale: 0.5 }}
-            animate={{
-              y: "-10vh",
+            animate={{ 
+              y: "-10vh", 
               opacity: [0, 1, 1, 0],
               x: `${Math.random() * 100}vw`,
               rotate: 360
             }}
-            transition={{
-              duration: Math.random() * 15 + 10,
-              repeat: Infinity,
+            transition={{ 
+              duration: Math.random() * 15 + 10, 
+              repeat: Infinity, 
               delay: Math.random() * 10,
               ease: "linear"
             }}
@@ -54,24 +69,24 @@ const Wishes: React.FC = () => {
 
       {/* Main Content (Envelope) */}
       <div className="relative z-10 flex flex-col items-center px-4">
-        <motion.div
+        <motion.div 
           className="relative group"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
           {/* The Envelope/Card Container */}
-          <motion.div
+          <motion.div 
             className="relative w-80 h-56 md:w-[450px] md:h-[300px] cursor-pointer perspective-1000"
-            onClick={handleOpen}
+            onClick={handleOpenAttempt}
           >
             {/* Envelope Back/Body */}
             <div className="absolute inset-0 bg-white rounded-xl shadow-2xl border-2 border-pink-100 overflow-hidden">
               {/* Small Preview of Letter (revealed when open) */}
-              <motion.div
+              <motion.div 
                 className="absolute inset-0 p-8 flex flex-col items-center justify-center text-center bg-white"
                 initial={false}
-                animate={{
+                animate={{ 
                   y: isOpen ? -20 : 0,
                   opacity: isOpen ? 1 : 0,
                   scale: isOpen ? 1 : 0.9
@@ -88,7 +103,7 @@ const Wishes: React.FC = () => {
             </div>
 
             {/* Envelope Flap (Top) */}
-            <motion.div
+            <motion.div 
               className="absolute top-0 left-0 w-full h-1/2 bg-pink-100 rounded-t-xl z-30 border-b border-pink-200 shadow-sm origin-top"
               initial={false}
               animate={{ rotateX: isOpen ? -120 : 0 }}
@@ -124,7 +139,7 @@ const Wishes: React.FC = () => {
         </motion.div>
 
         {/* Text below the card */}
-        <motion.div
+        <motion.div 
           className="mt-12 text-center"
           animate={{ y: isOpen ? 20 : 0, opacity: isOpen ? 0 : 1 }}
         >
@@ -136,6 +151,77 @@ const Wishes: React.FC = () => {
           </p>
         </motion.div>
       </div>
+
+      {/* Password Prompt Modal */}
+      <AnimatePresence>
+        {showPasswordPrompt && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-pink-900/40 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="bg-white rounded-2xl p-8 shadow-2xl w-full max-w-sm border-2 border-pink-100"
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 bg-pink-50 rounded-full flex items-center justify-center mb-6">
+                  <Heart className="text-pink-500" fill="currentColor" />
+                </div>
+                <h3 className="text-2xl font-serif italic text-pink-600 mb-2">Secret Access</h3>
+                <p className="text-slate-500 text-sm mb-8">Enter the secret word to read your letter</p>
+                
+                <form onSubmit={handlePasswordSubmit} className="w-full space-y-4">
+                  <div className="relative">
+                    <input
+                      autoFocus
+                      type="password"
+                      value={passwordInput}
+                      onChange={(e) => setPasswordInput(e.target.value)}
+                      placeholder="Enter password..."
+                      className={`w-full px-6 py-4 bg-pink-50/50 border-2 rounded-xl outline-none transition-all text-center font-serif text-lg ${
+                        error ? 'border-red-400 animate-shake' : 'border-pink-100 focus:border-pink-400'
+                      }`}
+                    />
+                    {error && (
+                      <motion.p 
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="absolute -bottom-6 left-0 right-0 text-red-500 text-[10px] uppercase font-bold tracking-widest"
+                      >
+                        Incorrect Password
+                      </motion.p>
+                    )}
+                  </div>
+                  
+                  <div className="flex gap-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowPasswordPrompt(false);
+                        setPasswordInput('');
+                        setError(false);
+                      }}
+                      className="flex-1 py-4 text-slate-400 font-bold text-xs uppercase tracking-widest hover:text-slate-600 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className="flex-[2] py-4 bg-pink-500 text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-pink-200 hover:bg-pink-600 transition-colors"
+                    >
+                      Unlock
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Fullscreen Expanded Paper */}
       <AnimatePresence>
@@ -206,7 +292,7 @@ const Wishes: React.FC = () => {
                   className="w-full h-px bg-gradient-to-r from-transparent via-pink-500 to-transparent mb-12"
                 />
 
-                <div className="space-y-8 text-slate-800 leading-relaxed text-sm md:text-lg font-sans text-center px-2">
+                <div className="space-y-8 text-slate-800 leading-relaxed text-sm md:text-md font-sans text-center px-2">
 
                   <motion.p
                     initial={{ opacity: 0, x: 20 }}
@@ -267,7 +353,7 @@ const Wishes: React.FC = () => {
                     }}
                     className="px-12 py-4 border-2 border-pink-500 text-pink-500 rounded-full font-bold tracking-[0.2em] uppercase transition-all duration-300 shadow-lg hover:shadow-pink-200"
                   >
-                    [ LEIDO ]
+                     LEIDO
                   </motion.button>
                 </motion.div>
               </div>
