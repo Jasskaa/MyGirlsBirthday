@@ -206,19 +206,7 @@ const Wishes: React.FC = () => {
                   className="w-full h-px bg-gradient-to-r from-transparent via-pink-500 to-transparent mb-12"
                 />
 
-                <div className="space-y-8 text-slate-800 leading-relaxed text-lg md:text-l font-sans text-center px-2">
-
-                  {/* Subtle Flourish Between Paragraphs */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.2 }}
-                    transition={{ delay: 1.1 }}
-                    className="flex justify-center gap-4"
-                  >
-                    <Leaf size={14} className="text-pink-400 rotate-90" />
-                    <div className="w-6 h-px bg-pink-200 self-center" />
-                    <Leaf size={14} className="text-pink-400 -rotate-90" />
-                  </motion.div>
+                <div className="space-y-8 text-slate-800 leading-relaxed text-sm md:text-lg font-sans text-center px-2">
 
                   <motion.p
                     initial={{ opacity: 0, x: 20 }}
@@ -299,15 +287,3 @@ const Wishes: React.FC = () => {
 };
 
 export default Wishes;
-
-
-
-
-
-
-
-
-
-
-
-

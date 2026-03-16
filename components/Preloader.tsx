@@ -12,12 +12,12 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     // Step 1: First text for 10 seconds
     const timer1 = setTimeout(() => {
       setStep(2);
-    }, 10000);
+    }, 10);
 
     // Step 2: Second text appears after 10s, then wait 5s to show button
     const timer2 = setTimeout(() => {
       setStep(3);
-    }, 15000);
+    }, 10);
 
     return () => {
       clearTimeout(timer1);

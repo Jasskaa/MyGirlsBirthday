@@ -1,0 +1,7 @@
+html, body {
+  cursor: none !important;
+}
+
+a, button, .cursor-pointer {
+  cursor: none !important;
+}

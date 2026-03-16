@@ -6,6 +6,7 @@ import Quiz from './components/Quiz';
 import Timeline from './components/Timeline';
 import Preloader from './components/Preloader';
 import Wishes from './components/Wishes';
+import CustomCursor from './components/CustomCursor';
 import { AnimatePresence } from 'framer-motion';
 
 const App: React.FC = () => {
@@ -14,6 +15,7 @@ const App: React.FC = () => {
 
   return (
     <>
+      <CustomCursor />
       <AnimatePresence>
         {!isLoaded && (
           <Preloader onComplete={() => setIsLoaded(true)} />
@@ -29,7 +31,7 @@ const App: React.FC = () => {
               <Hero onStartQuiz={() => setActiveSection('quiz')} />
             )}
             {activeSection === 'timeline' && (
-              <Timeline />
+              <Timeline onBack={() => setActiveSection('home')} />
             )}
             {activeSection === 'quiz' && (
               <Quiz />
