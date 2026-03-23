@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useSpring, useMotionValue } from 'framer-motion';
+import { Heart } from 'lucide-react';
 
 const CustomCursor: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
@@ -77,7 +78,7 @@ const CustomCursor: React.FC = () => {
         className="absolute w-8 h-8 border border-primary rounded-full"
       />
       
-      {/* Inner Dot */}
+      {/* Inner Heart */}
       <motion.div
         style={{
           x: mouseX,
@@ -87,10 +88,12 @@ const CustomCursor: React.FC = () => {
         }}
         animate={{
           scale: isHovering ? 1.5 : 1,
-          backgroundColor: '#ec1337',
+          color: '#ec1337',
         }}
-        className="absolute w-2 h-2 bg-primary rounded-full shadow-sm"
-      />
+        className="absolute flex items-center justify-center"
+      >
+        <Heart size={12} fill="#ec1337" className="text-primary" />
+      </motion.div>
     </div>
   );
 };

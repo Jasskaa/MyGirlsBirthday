@@ -32,10 +32,10 @@ const QUESTIONS: Question[] = [
     question: "What time did we go to sleep the day we had talked until later?",
     subtitle: "We shared a large night conversation until i fell asleep...",
     options: [
-      { id: 'a', label: 'Until 1am', image: 'https://t3.ftcdn.net/jpg/17/91/31/00/360_F_1791310071_t9YVLJokuhrDLFW8rsb6d4IADeJxpuQ6.jpg' },
-      { id: 'b', label: 'Until 2:25am', image: 'https://www.verywellmind.com/thmb/7Hrqh2TU1LYOqvbce0-XR42p264=/2121x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-920554794-a14221688c4b44da9e363797ecc87650.jpg' },
-      { id: 'c', label: 'Until 3am', image: 'https://www.digitaltrends.com/wp-content/uploads/2013/07/iphone-sleep.jpg' },
-      { id: 'd', label: 'Until 4am', image: 'https://unitedveincenters.com/wp-content/uploads/2024/01/Best-Sleeping-Positions-for-Circulation.png' }
+      { id: 'a', label: 'Until 1am', image: 'https://i.pinimg.com/736x/50/d7/37/50d73780420ec05a58e03ded976f0113.jpg' },
+      { id: 'b', label: 'Until 2:25am', image: 'https://i.pinimg.com/1200x/02/ec/47/02ec47068703e82d62e589a36de77d38.jpg' },
+      { id: 'c', label: 'Until 3am', image: 'https://i.pinimg.com/736x/7a/76/46/7a7646c2ec6f0f14526d4f131efb3497.jpg' },
+      { id: 'd', label: 'Until 4am', image: 'https://i.pinimg.com/1200x/2c/a4/38/2ca438a17d5fec8bc364fcb117830f63.jpg' }
     ],
     correctAnswer: 'c'
   },
@@ -53,15 +53,15 @@ const QUESTIONS: Question[] = [
   },
   {
     id: 4,
-    question: "What was I wearing the first time we met?",
-    subtitle: "Near the beach",
+    question: "What was the first gift you gave me?",
+    subtitle: "Easy One",
     options: [
-      { id: 'a', label: 'T-Shirt + Shorts', image: 'https://cdn.lookastic.com/looks/light-blue-denim-shorts-black-crew-neck-t-shirt-large-88110.jpg' },
-      { id: 'b', label: 'Button-up shirt + Shorts', image: 'https://i.pinimg.com/736x/04/d4/51/04d451e0e8172cad6922364835c42810.jpg' },
-      { id: 'c', label: 'Shirt + Pants', image: 'https://hespokestyle.com/wp-content/uploads/2018/08/can-i-wear-t-shirt-with-formal-pants.jpg' },
-      { id: 'd', label: 'Bikini', image: 'https://cdn-images.farfetch-contents.com/11/64/73/52/11647352_7731559_1000.jpg' }
+      { id: 'a', label: 'Sweatshirt', image: 'https://i.pinimg.com/736x/8c/21/ba/8c21ba31d8c03abcdf08d811ca4b5bcb.jpg' },
+      { id: 'b', label: 'Braclet', image: 'https://i.pinimg.com/1200x/09/cd/c1/09cdc19ffd710c0479fca80ea20e6464.jpg' },
+      { id: 'c', label: 'NightSuit', image: 'https://i.pinimg.com/736x/68/2c/f0/682cf00bca1e39e4e38d4b65f49b1953.jpg' },
+      { id: 'd', label: 'keychain', image: 'https://i.pinimg.com/1200x/99/45/22/99452206499a981ab86c9c11f2a4ca43.jpg' }
     ],
-    correctAnswer: 'b'
+    correctAnswer: 'd'
   },
   {
     id: 5,
@@ -74,6 +74,30 @@ const QUESTIONS: Question[] = [
       { id: 'd', label: 'Eyes', image: 'https://media.allaboutvision.com/cms/caas/v1/media/405814/data/6f02a1d4933b24582c6876b4404844d0/bannerimage.jpg' }
     ],
     correctAnswer: 'b'
+  },
+    {
+    id: 6,
+    question: "What was the first day I came by surprise?",
+    subtitle: "U didn't expect that",
+    options: [
+      { id: 'a', label: '26 Feb', image: 'https://i.pinimg.com/1200x/0b/91/f2/0b91f2f4370cf26f23e44efe7136195c.jpg' },
+      { id: 'b', label: '21 Mar', image: 'https://i.pinimg.com/736x/3a/61/62/3a61623c2dbe0571cbdb65a906636f8d.jpg' },
+      { id: 'c', label: '25 Gen', image: 'https://i.pinimg.com/1200x/c8/02/e0/c802e05bc5d4a02fafc4806c3ae1d08c.jpg' },
+      { id: 'd', label: '31 dec', image: 'https://i.pinimg.com/736x/5e/2a/d5/5e2ad504cb11850c4ba71f7844c3e393.jpg' }
+    ],
+    correctAnswer: 'a'
+  },
+    {
+    id: 7,
+    question: "What day did you get your nails done?",
+    subtitle: "A weading",
+    options: [
+      { id: 'a', label: '27 Oct', image: 'https://i.pinimg.com/736x/59/c2/a1/59c2a1ab43f50cfd8856c49e2f7c6dc1.jpg' },
+      { id: 'b', label: '25 Nov', image: 'https://i.pinimg.com/1200x/50/75/c3/5075c362e0b0544b4cf7aa6b52ff9424.jpg' },
+      { id: 'c', label: '27 Nov', image: 'https://ae-pic-a1.aliexpress-media.com/kf/Sd65e893b13314d2d9a2836170a1202f5D.jpg_640x640q75.jpg_.avif' },
+      { id: 'd', label: '02 Dec', image: 'https://i.pinimg.com/736x/53/0b/5f/530b5fc030281bc378cb7fbaca9ae6de.jpg' }
+    ],
+    correctAnswer: 'c'
   },
   // Add more questions as needed
 ];
