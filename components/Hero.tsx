@@ -39,7 +39,7 @@ const Hero: React.FC<HeroProps> = ({ onStartQuiz }) => {
             (e.target as HTMLVideoElement).pause();
           }}
         >
-          <source src="/Animacion.mp4" type="video/mp4" />
+          <source src="/animacion.mp4" type="video/mp4" />
         </video>
       </div>
 
