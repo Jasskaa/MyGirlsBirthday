@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Cake, ArrowRight, ChevronDown } from 'lucide-react';
+import { Cake, ArrowRight } from 'lucide-react';
 import StatCard from './StatCard';
 
 interface HeroProps {
   onStartQuiz: () => void;
 }
-
 
 const Hero: React.FC<HeroProps> = ({ onStartQuiz }) => {
   const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -28,21 +27,25 @@ const Hero: React.FC<HeroProps> = ({ onStartQuiz }) => {
 
   return (
     <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black">
+      {/* Video Background Container */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80 z-10"></div>
         <video
           autoPlay
           muted
+          loop
           playsInline
           className="h-full w-full object-cover object-center scale-105"
-          onEnded={(e) => {
-            (e.target as HTMLVideoElement).pause();
-          }}
         >
-          <source src="/animacion.mp4" type="video/mp4" />
+          <source 
+            src="https://ltjymquwgguwr1d1.public.blob.vercel-storage.com/ds.mp4" 
+            type="video/mp4" 
+          />
+          Your browser does not support the video tag.
         </video>
       </div>
 
+      {/* Content */}
       <div className="relative z-20 flex w-full max-w-5xl flex-col items-center gap-10 px-4 py-20 text-center md:gap-14 mt-16">
         <div className="flex flex-col gap-6 items-center animate-fade-in-up">
           <div className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2 backdrop-blur-md">
