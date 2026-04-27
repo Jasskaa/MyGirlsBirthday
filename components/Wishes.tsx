@@ -292,7 +292,7 @@ const Wishes: React.FC = () => {
                   className="w-full h-px bg-gradient-to-r from-transparent via-pink-500 to-transparent mb-12"
                 />
 
-                <div className="space-y-8 text-slate-800 leading-relaxed text-sm md:text-md font-sans text-center px-2">
+                <div className="space-y-8 text-slate-800 leading-relaxed text-2xl md:text-3xl font-handwritten text-center px-6 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
 
                   <motion.p
                     initial={{ opacity: 0, x: 20 }}

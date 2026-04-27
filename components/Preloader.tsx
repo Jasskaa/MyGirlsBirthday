@@ -60,11 +60,9 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             className="max-w-2xl flex flex-col items-center"
           >
             <h2 className="text-2xl md:text-4xl font-serif italic text-zinc-300">
-              Before I begin, I just need to tell you how incredibly much I love you, my love. 💕
-              <br />
-              Enjoy your special little page, bugguu — it has a bit of everything, just like us… I made it all thinking of you.
-              <br />
-              I love youuuuu so much. MUAHHHH 😘💕
+              Loading your gift... and a million reasons why I love you.
+              <br/>
+              Relax and enjoy, this is our little corner. 🤍
             </h2>
 
             <AnimatePresence>
@@ -77,7 +75,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   onClick={onComplete}
                   className="mt-12 px-8 py-3 border border-white/30 rounded-full hover:bg-white hover:text-black transition-all duration-500 text-sm tracking-[0.2em] uppercase"
                 >
-                  Made with love → 
+                  Made with love →
                 </motion.button>
               )}
             </AnimatePresence>

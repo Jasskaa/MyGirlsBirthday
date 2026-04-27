@@ -30,12 +30,17 @@ const Hero: React.FC<HeroProps> = ({ onStartQuiz }) => {
     <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80 z-10"></div>
-        <img
-          src="https://i.pinimg.com/736x/f2/bd/7c/f2bd7cc35a9809558362514b2e3c3ee2.jpg"
-          alt="Romantic couple"
+        <video
+          autoPlay
+          muted
+          playsInline
           className="h-full w-full object-cover object-center scale-105"
-          style={{ animationDuration: '30s', animationName: 'kenburns', animationIterationCount: 'infinite' }}
-        />
+          onEnded={(e) => {
+            (e.target as HTMLVideoElement).pause();
+          }}
+        >
+          <source src="/Animacion.mp4" type="video/mp4" />
+        </video>
       </div>
 
       <div className="relative z-20 flex w-full max-w-5xl flex-col items-center gap-10 px-4 py-20 text-center md:gap-14 mt-16">
@@ -69,10 +74,10 @@ const Hero: React.FC<HeroProps> = ({ onStartQuiz }) => {
 
         <div className="flex flex-col items-center gap-5 pt-4 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
           <button
-            onClick={onStartQuiz}
+            onClick={() => window.location.href = 'https://guess-the-phhrase.vercel.app/'}
             className="group relative flex h-16 min-w-[240px] items-center justify-center gap-3 overflow-hidden rounded-full bg-primary px-10 text-white shadow-xl shadow-red-900/40 transition-all hover:bg-primary-dark hover:scale-105 active:scale-95"
           >
-            <span className="relative z-10 text-lg font-bold tracking-wide text-white">Try our Love Quiz</span>
+            <span className="relative z-10 text-lg font-bold tracking-wide text-white">Play The Trailer</span>
             <ArrowRight className="relative z-10 transition-transform duration-300 group-hover:translate-x-1" size={20} />
           </button>
         </div>
