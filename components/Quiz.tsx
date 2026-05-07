@@ -6,7 +6,6 @@ import WordSearch from './WordSearch';
 interface Question {
   id: number;
   question: string;
-  subtitle: string;
   options: {
     id: string;
     label: string;
@@ -18,8 +17,7 @@ interface Question {
 const QUESTIONS: Question[] = [
   {
     id: 1,
-    question: "Where was our first date?",
-    subtitle: "Think it again, our first date...",
+    question: "Donde fue nuestra primera cita?",
     options: [
       { id: 'a', label: 'Platja d`aro', image: 'https://www.apartamentos3000.com/blog/wp-content/uploads/2024/07/atardecer-play-platja-daro-ght-hotels-1672325885.jpg' },
       { id: 'b', label: 'Lloret de mar', image: 'https://www.almirall.info/assets/cache/uploads/altres/1920x1036/playa-edificios-lloret-de-mar-almirall-apartaments-1676893672.jpeg' },
@@ -30,75 +28,80 @@ const QUESTIONS: Question[] = [
   },
   {
     id: 2,
-    question: "What time did we go to sleep the day we had talked until later?",
-    subtitle: "We shared a large night conversation until i fell asleep...",
+    question: "El dia que quedamos los 4, donde le preste el coche a balsa?",
     options: [
-      { id: 'a', label: 'Until 1am', image: 'https://i.pinimg.com/736x/50/d7/37/50d73780420ec05a58e03ded976f0113.jpg' },
-      { id: 'b', label: 'Until 2:25am', image: 'https://i.pinimg.com/1200x/02/ec/47/02ec47068703e82d62e589a36de77d38.jpg' },
-      { id: 'c', label: 'Until 3am', image: 'https://i.pinimg.com/736x/7a/76/46/7a7646c2ec6f0f14526d4f131efb3497.jpg' },
-      { id: 'd', label: 'Until 4am', image: 'https://i.pinimg.com/1200x/2c/a4/38/2ca438a17d5fec8bc364fcb117830f63.jpg' }
+      { id: 'a', label: 'Salt', image: 'https://femturisme.cat/_fotos/pobles/general/571-04-vistes.jpg' },
+      { id: 'b', label: 'Fornells de la selva', image: 'https://gironasecreta.com/wp-content/uploads/2024/07/flexicar-girona-438x265-transformed.jpeg' },
+      { id: 'c', label: 'Sarria del ter', image: 'https://fotos.hoteles.net/articulos/sarria-de-ter-girona-6047-2.jpg' },
+      { id: 'd', label: 'Montilivi', image: 'https://estaticos-cdn.prensaiberica.es/clip/d831232f-3966-4003-993b-13d8f3ea5d86_alta-libre-aspect-ratio_default_0.jpg' }
     ],
-    correctAnswer: 'c'
+    correctAnswer: 'b'
   },
   {
     id: 3,
-    question: "What day was it that we saw each other for the first time?",
-    subtitle: "Think it... SAW EACH OTHER",
+    question: "Que dia nos vimos por primer vez?",
     options: [
-      { id: 'a', label: '28 June', image: 'https://www.ausuddespyrenees.com/wp-content/uploads/Espai-Girones-Girona-1.png' },
-      { id: 'b', label: '26 June', image: 'https://larutadelscabrera.cat/wp-content/uploads/2020/05/angles-2-1.jpg' },
-      { id: 'c', label: '3 April', image: 'https://dvncorestorageprod.blob.core.windows.net/files/page/212/Image/Nagar%20Kirtan_20241025042151233.jpg' },
-      { id: 'd', label: '6 August', image: 'https://estaticos-cdn.prensaiberica.es/clip/4aebab6a-69a2-43c9-9d36-1730cdbbce61_alta-libre-aspect-ratio_default_0.jpg' }
+      { id: 'a', label: '28 Junio', image: 'https://www.ausuddespyrenees.com/wp-content/uploads/Espai-Girones-Girona-1.png' },
+      { id: 'b', label: '26 Junio', image: 'https://larutadelscabrera.cat/wp-content/uploads/2020/05/angles-2-1.jpg' },
+      { id: 'c', label: '3 Abril', image: 'https://dvncorestorageprod.blob.core.windows.net/files/page/212/Image/Nagar%20Kirtan_20241025042151233.jpg' },
+      { id: 'd', label: '6 Agosto', image: 'https://estaticos-cdn.prensaiberica.es/clip/4aebab6a-69a2-43c9-9d36-1730cdbbce61_alta-libre-aspect-ratio_default_0.jpg' }
     ],
     correctAnswer: 'a'
   },
   {
     id: 4,
-    question: "What was the first gift you gave me?",
-    subtitle: "Easy One",
+    question: "Qual fue el primer regalo que me disete?",
     options: [
-      { id: 'a', label: 'Sweatshirt', image: 'https://i.pinimg.com/736x/8c/21/ba/8c21ba31d8c03abcdf08d811ca4b5bcb.jpg' },
-      { id: 'b', label: 'Braclet', image: 'https://i.pinimg.com/1200x/09/cd/c1/09cdc19ffd710c0479fca80ea20e6464.jpg' },
-      { id: 'c', label: 'NightSuit', image: 'https://i.pinimg.com/736x/68/2c/f0/682cf00bca1e39e4e38d4b65f49b1953.jpg' },
-      { id: 'd', label: 'keychain', image: 'https://i.pinimg.com/1200x/99/45/22/99452206499a981ab86c9c11f2a4ca43.jpg' }
+      { id: 'a', label: 'Sudadera', image: 'https://i.pinimg.com/736x/8c/21/ba/8c21ba31d8c03abcdf08d811ca4b5bcb.jpg' },
+      { id: 'b', label: 'Bracalete', image: 'https://i.pinimg.com/1200x/09/cd/c1/09cdc19ffd710c0479fca80ea20e6464.jpg' },
+      { id: 'c', label: 'Night Suit', image: 'https://i.pinimg.com/736x/68/2c/f0/682cf00bca1e39e4e38d4b65f49b1953.jpg' },
+      { id: 'd', label: 'LLavero', image: 'https://i.pinimg.com/1200x/99/45/22/99452206499a981ab86c9c11f2a4ca43.jpg' }
     ],
     correctAnswer: 'd'
   },
   {
     id: 5,
-    question: "What is the thing i love the most about you?",
-    subtitle: "...",
+    question: "Que es lo que mas me gusta de ti?",
     options: [
-      { id: 'a', label: 'Face', image: 'https://t3.ftcdn.net/jpg/02/92/28/78/360_F_292287867_hC2Owo0yInRruYbxZXKoJZhB7YUCHdmp.jpg' },
-      { id: 'b', label: 'Belly', image: 'https://adultandpediatricdermatology.com/wp-content/uploads/2024/04/How-to-Lose-Belly-Fat.webp' },
-      { id: 'c', label: 'Personality', image: 'https://liveinnovation.org/wp-content/uploads/2020/06/pexels-photo-3812743.jpg' },
-      { id: 'd', label: 'Eyes', image: 'https://media.allaboutvision.com/cms/caas/v1/media/405814/data/6f02a1d4933b24582c6876b4404844d0/bannerimage.jpg' }
+      { id: 'a', label: 'Cara', image: 'https://t3.ftcdn.net/jpg/02/92/28/78/360_F_292287867_hC2Owo0yInRruYbxZXKoJZhB7YUCHdmp.jpg' },
+      { id: 'b', label: 'Barriga', image: 'https://adultandpediatricdermatology.com/wp-content/uploads/2024/04/How-to-Lose-Belly-Fat.webp' },
+      { id: 'c', label: 'Ojos', image: 'https://i.pinimg.com/736x/87/5b/98/875b9895bb2cf3385826d70ada9194af.jpg' },
+      { id: 'd', label: 'Culo', image: 'https://i.pinimg.com/736x/a7/83/e5/a783e5bf25f33cd13fb6644b85967865.jpg' }
     ],
     correctAnswer: 'b'
   },
     {
     id: 6,
-    question: "What was the first day I came by surprise?",
-    subtitle: "U didn't expect that",
+    question: "Que dia te hiciste las uñas?",
     options: [
-      { id: 'a', label: '26 Feb', image: 'https://i.pinimg.com/1200x/0b/91/f2/0b91f2f4370cf26f23e44efe7136195c.jpg' },
-      { id: 'b', label: '21 Mar', image: 'https://i.pinimg.com/736x/3a/61/62/3a61623c2dbe0571cbdb65a906636f8d.jpg' },
-      { id: 'c', label: '25 Gen', image: 'https://i.pinimg.com/1200x/c8/02/e0/c802e05bc5d4a02fafc4806c3ae1d08c.jpg' },
-      { id: 'd', label: '31 dec', image: 'https://i.pinimg.com/736x/5e/2a/d5/5e2ad504cb11850c4ba71f7844c3e393.jpg' }
+      { id: 'a', label: '27 Oct', image: 'https://i.pinimg.com/736x/53/0b/5f/530b5fc030281bc378cb7fbaca9ae6de.jpg' },
+      { id: 'b', label: '25 Nov', image: 'https://i.pinimg.com/736x/61/44/37/61443788b375b5e457e1864fb8016570.jpg' },
+      { id: 'c', label: '27 Nov', image: 'https://i.pinimg.com/736x/f9/e4/33/f9e4332bdd70abbd3fd84ef6b23039b7.jpg' },
+      { id: 'd', label: '02 Dic', image: 'https://i.pinimg.com/736x/d7/91/92/d7919284395c3d56205e6b669e5ec299.jpg' }
     ],
-    correctAnswer: 'a'
+    correctAnswer: 'c'
   },
     {
     id: 7,
-    question: "What day did you get your nails done?",
-    subtitle: "A weading",
+    question: "Por que razon realmente te apuntaste a basket?",
     options: [
-      { id: 'a', label: '27 Oct', image: 'https://i.pinimg.com/736x/59/c2/a1/59c2a1ab43f50cfd8856c49e2f7c6dc1.jpg' },
-      { id: 'b', label: '25 Nov', image: 'https://i.pinimg.com/1200x/50/75/c3/5075c362e0b0544b4cf7aa6b52ff9424.jpg' },
-      { id: 'c', label: '27 Nov', image: 'https://ae-pic-a1.aliexpress-media.com/kf/Sd65e893b13314d2d9a2836170a1202f5D.jpg_640x640q75.jpg_.avif' },
-      { id: 'd', label: '02 Dec', image: 'https://i.pinimg.com/736x/53/0b/5f/530b5fc030281bc378cb7fbaca9ae6de.jpg' }
+      { id: 'a', label: 'Actividad fisica', image: 'https://i.pinimg.com/736x/ae/34/3f/ae343f6ff52ea509e8751c44b6d4efeb.jpg' },
+      { id: 'b', label: 'Despejar', image: 'https://i.pinimg.com/736x/95/f2/40/95f2401d980fdfd983f80dd8961e0983.jpg' },
+      { id: 'c', label: 'Recuerdos Viejos', image: 'https://i.pinimg.com/1200x/a4/02/d5/a402d53e936799ca936ddbbf7acec3bb.jpg' },
+      { id: 'd', label: 'Aprimar', image: 'https://i.pinimg.com/1200x/9c/42/1a/9c421aa2a4e690cf8a3d16d19be190db.jpg' }
     ],
     correctAnswer: 'c'
+  },
+      {
+    id: 8,
+    question: "Que es lo que mas te costo que te dijera?",
+    options: [
+      { id: 'a', label: 'Te amo', image: 'https://i.pinimg.com/736x/a7/0c/81/a70c81bbf2726b35b94f8265be3751a1.jpg' },
+      { id: 'b', label: 'Emoji', image: 'https://i.pinimg.com/736x/1f/fd/b7/1ffdb7ea1273ab2b6f36ce4d31043ce7.jpg' },
+      { id: 'c', label: 'Palabras gua*ras', image: 'https://i.pinimg.com/736x/1d/77/c1/1d77c1daf7dfbb9b71c8a6eb3be9cea8.jpg' },
+      { id: 'd', label: 'Guapa', image: 'https://i.pinimg.com/736x/83/c0/50/83c050b9f88f99e6a9ac84d9714dc74e.jpg' }
+    ],
+    correctAnswer: 'b'
   },
   // Add more questions as needed
 ];
@@ -232,12 +235,9 @@ const Quiz: React.FC = () => {
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-primary">
                     <MapPin size={24} />
                   </div>
-                  <h2 className="text-3xl font-extrabold text-slate-900 md:text-4xl mb-3">
+                  <h2 className="text-3xl font-extrabold text-slate-900 md:text-4xl mb-10">
                     {currentQuestion.question}
                   </h2>
-                  <p className="text-slate-400 italic font-medium">
-                    {currentQuestion.subtitle}
-                  </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

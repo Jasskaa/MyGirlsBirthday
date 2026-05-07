@@ -33,7 +33,6 @@ const Hero: React.FC<HeroProps> = ({ onStartQuiz }) => {
         <video
           autoPlay
           muted
-          loop
           playsInline
           className="h-full w-full object-cover object-center scale-105"
         >
